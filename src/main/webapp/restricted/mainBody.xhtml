@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition>
+		<h:form id="mainBody">
+		
+			<p:blockUI block="callsTable" trigger="callsOP" />
+			
+			<p:dataTable var="calls" value="#{callsBean.callsFakes}" id="callsTable">
+				<f:facet name="header">
+	            Chamados
+	        </f:facet>
+
+				<p:columnGroup type="header">
+					<p:row>
+						<p:column rowspan="4" headerText=" " />
+					</p:row>
+					<p:row>
+						<p:column rowspan="3" headerText="Atendente (login)" />
+					</p:row>
+					<p:row>
+						<p:column headerText="Motivo" />
+						<p:column headerText="Tipo do chamado" />
+						<p:column headerText="Número do chamado" />
+					</p:row>
+				</p:columnGroup>
+
+				<p:subTable var="group"
+					value="#{callsBean.getCallsGroup(calls.state, calls.insertionDateString)}">
+					<f:facet name="header">
+						<h:outputText value="#{calls.state} " />
+						<h:outputText value="#{calls.insertionDateString}" />
+					</f:facet>
+					<p:column style="width:32px;text-align: center">
+						<p:commandButton update="mainBody:callsDetail"
+							oncomplete="PF('callsOP').show('#{component.clientId}')"
+							icon="ui-icon-search" title="Descrição do chamado">
+							<f:setPropertyActionListener value="#{group}"
+								target="#{callsBean.selectedCall}" />
+						</p:commandButton>
+					</p:column>
+					<p:column>
+						<h:outputText value="#{group.user.login}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{group.reasonString}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{group.typeCallString}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{group.number}" />
+					</p:column>
+				</p:subTable>
+
+			</p:dataTable>
+
+			<p:overlayPanel id="callsOP" widgetVar="callsOP" showEffect="fade"
+				hideEffect="fade" dismissable="false" showCloseIcon="true">
+				<p:outputPanel id="callsDetail" style="text-align:center;">
+					<p:panelGrid columns="2" columnClasses="label,value">
+						<h:outputText value="Descrição:" />
+						<h:inputTextarea value="#{callsBean.selectedCall.description}" disabled="true"/>
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:overlayPanel>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

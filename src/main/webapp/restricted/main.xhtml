@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+
+	<table>
+		<tr>
+			<td><h:form id="main">
+					<p:splitButton value="#{loginBean.loggedUser.login}">
+						<p:menuitem value="Inserir chamado" icon="ui-icon-disk"
+							onclick="PF('dlgInsert').show();" />
+						<p:separator />
+						<p:menuitem value="Sair" action="#{loginBean.logout()}"
+							icon="ui-icon-extlink" />
+					</p:splitButton>
+
+				</h:form></td>
+		</tr>
+
+		<tr>
+			<td><ui:insert name="main">
+					<ui:include src="mainBody.xhtml" />
+				</ui:insert></td>
+		</tr>
+	</table>
+
+	<h:form id="formInsert">
+				
+		<p:dialog header="Chamados" widgetVar="dlgInsert" minHeight="40"
+			resizable="false">
+			<p:growl id="messages" showDetail="false" sticky="true" />
+			<p:panelGrid columns="2" cellpadding="5" id="gridInsert">
+				<f:facet name="header">
+					<p:outputLabel value="Inserindo chamados"></p:outputLabel>
+				</f:facet>
+
+				<h:outputText value="Tipo do chamado:" for="typeCall" />
+				<p:selectOneButton id="typeCall" required="true"
+					requiredMessage="Escolha o tipo do chamado."
+					value="#{callsBean.typeCall}">
+					<f:selectItem itemLabel="Chat" itemValue="C" />
+					<f:selectItem itemLabel="Telefone" itemValue="T" />
+					<f:selectItem itemLabel="E-mail" itemValue="E" />
+				</p:selectOneButton>
+
+				<h:outputText value="Motivo:" for="reason" />
+				<p:selectOneButton required="true" id="reason"
+					value="#{callsBean.reason}" requiredMessage="Escolha o motivo.">
+					<f:selectItem itemLabel="Dúvidas" itemValue="D" />
+					<f:selectItem itemLabel="Elogios" itemValue="E" />
+					<f:selectItem itemLabel="Sugestões" itemValue="S" />
+				</p:selectOneButton>
+
+				<h:outputText value="Estado:" for="state" />
+				<h:selectOneMenu required="true" id="state"
+					value="#{callsBean.state}" requiredMessage="Escolha o Estado.">
+					<f:selectItem itemLabel="Escolha um Estado" itemValue="" />
+					<f:selectItem itemValue="AC" itemLabel="Acre">
+					</f:selectItem>
+					<f:selectItem itemValue="AL" itemLabel="Alagoas">
+					</f:selectItem>
+					<f:selectItem itemValue="AM" itemLabel="Amazonas">
+					</f:selectItem>
+					<f:selectItem itemValue="AP" itemLabel="Amapá">
+					</f:selectItem>
+					<f:selectItem itemValue="BA" itemLabel="Bahia">
+					</f:selectItem>
+					<f:selectItem itemValue="CE" itemLabel="Ceará">
+					</f:selectItem>
+					<f:selectItem itemValue="DF" itemLabel="Distrito Federal">
+					</f:selectItem>
+					<f:selectItem itemValue="ES" itemLabel="Espírito Santo">
+					</f:selectItem>
+					<f:selectItem itemValue="GO" itemLabel="Goiás">
+					</f:selectItem>
+					<f:selectItem itemValue="MA" itemLabel="Maranhão">
+					</f:selectItem>
+					<f:selectItem itemValue="MT" itemLabel="Mato Grosso">
+					</f:selectItem>
+					<f:selectItem itemValue="MS" itemLabel="Mato Grosso do Sul">
+					</f:selectItem>
+					<f:selectItem itemValue="MG" itemLabel="Minas Gerais">
+					</f:selectItem>
+					<f:selectItem itemValue="PA" itemLabel="Pará">
+					</f:selectItem>
+					<f:selectItem itemValue="PB" itemLabel="Paraíba">
+					</f:selectItem>
+					<f:selectItem itemValue="PR" itemLabel="Paraná">
+					</f:selectItem>
+					<f:selectItem itemValue="PE" itemLabel="Pernambuco">
+					</f:selectItem>
+					<f:selectItem itemValue="PI" itemLabel="Piauí">
+					</f:selectItem>
+					<f:selectItem itemValue="RJ" itemLabel="Rio de Janeiro">
+					</f:selectItem>
+					<f:selectItem itemValue="RN" itemLabel="Rio Grande do Norte">
+					</f:selectItem>
+					<f:selectItem itemValue="RO" itemLabel="Rondônia">
+					</f:selectItem>
+					<f:selectItem itemValue="RS" itemLabel="Rio Grande do Sul">
+					</f:selectItem>
+					<f:selectItem itemValue="RR" itemLabel="Roraima">
+					</f:selectItem>
+					<f:selectItem itemValue="SC" itemLabel="Santa Catarina">
+					</f:selectItem>
+					<f:selectItem itemValue="SE" itemLabel="Sergipe">
+					</f:selectItem>
+					<f:selectItem itemValue="SP" itemLabel="São Paulo">
+					</f:selectItem>
+					<f:selectItem itemValue="TO" itemLabel="Tocantins">
+					</f:selectItem>
+				</h:selectOneMenu>
+
+				<h:outputText value="Descrição:" for="description" />
+				<p:inputTextarea id="description" rows="5" cols="40"
+					value="#{callsBean.description}" counter="display" maxlength="4000"
+					counterTemplate="{0}" autoResize="false" required="true"
+					requiredMessage="Preencha o campo Descrição." />
+				<h:outputText value="Máximo de caracteres:" />
+				<h:outputText id="display" />
+				<f:facet name="footer">
+					<center>
+						<p:commandButton id="btnInsert" value="Inserir"
+							update=":formInsert:gridInsert, messages, :mainBody:callsTable"
+							actionListener="#{callsBean.insertCall()}"></p:commandButton>
+					</center>
+				</f:facet>
+			</p:panelGrid>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
+
