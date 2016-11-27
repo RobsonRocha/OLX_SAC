@@ -46,17 +46,17 @@
 				<p:selectOneButton id="typeCall" required="true"
 					requiredMessage="Escolha o tipo do chamado."
 					value="#{callsBean.typeCall}">
-					<f:selectItem itemLabel="Chat" itemValue="C" />
-					<f:selectItem itemLabel="Telefone" itemValue="T" />
-					<f:selectItem itemLabel="E-mail" itemValue="E" />
+					<f:selectItem id="chat" itemLabel="Chat" itemValue="C" />
+					<f:selectItem id="phone" itemLabel="Telefone" itemValue="T" />
+					<f:selectItem id="email" itemLabel="E-mail" itemValue="E" />
 				</p:selectOneButton>
 
 				<h:outputText value="Motivo:" for="reason" />
 				<p:selectOneButton required="true" id="reason"
 					value="#{callsBean.reason}" requiredMessage="Escolha o motivo.">
-					<f:selectItem itemLabel="Dúvidas" itemValue="D" />
-					<f:selectItem itemLabel="Elogios" itemValue="E" />
-					<f:selectItem itemLabel="Sugestões" itemValue="S" />
+					<f:selectItem id="doubt" itemLabel="Dúvidas" itemValue="D" />
+					<f:selectItem id="compliment" itemLabel="Elogios" itemValue="E" />
+					<f:selectItem id="suggestion" itemLabel="Sugestões" itemValue="S" />
 				</p:selectOneButton>
 
 				<h:outputText value="Estado:" for="state" />
