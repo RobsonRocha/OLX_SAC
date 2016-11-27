@@ -33,7 +33,8 @@ public class LoginDAO {
 				UserLogin userFound = (UserLogin) user.get(0);
 				return userFound;
 			}
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login e/ou senha inválidos.", ""));
+			if(FacesContext.getCurrentInstance() != null)
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login e/ou senha inválidos.", ""));
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();

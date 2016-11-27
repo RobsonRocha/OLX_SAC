@@ -1,5 +1,6 @@
 package br.com.olx.challenge.test.mock;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.com.olx.challenge.bean.CallsBean;
@@ -34,7 +35,7 @@ public class MainMock {
 		loginDAO.delete(ul);
 	}	
 	
-	public void insertCall(Calls call){
+	public void insertCall(Calls call) throws SQLException {
 		CallsBean cb = new CallsBean();
 		
 		cb.setTypeCall(call.getTypeCall());

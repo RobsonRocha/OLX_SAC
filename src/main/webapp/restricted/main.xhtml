@@ -14,11 +14,11 @@
 	<table>
 		<tr>
 			<td><h:form id="main">
-					<p:splitButton value="#{loginBean.loggedUser.login}">
-						<p:menuitem value="Inserir chamado" icon="ui-icon-disk"
+					<p:splitButton id="splMenu" value="#{loginBean.loggedUser.login}">
+						<p:menuitem id="mnuInsert" value="Inserir chamado" icon="ui-icon-disk"
 							onclick="PF('dlgInsert').show();" />
 						<p:separator />
-						<p:menuitem value="Sair" action="#{loginBean.logout()}"
+						<p:menuitem id="mnuExit" value="Sair" action="#{loginBean.logout()}"
 							icon="ui-icon-extlink" />
 					</p:splitButton>
 

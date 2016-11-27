@@ -1,15 +1,16 @@
 package br.com.olx.challenge.dao;
 
+import java.sql.SQLException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.olx.challenge.model.Calls;
-import br.com.olx.challenge.model.UserLogin;
 
 public class CallsDAO {
 
-	public boolean insert(Calls calls) {
+	public boolean insert(Calls calls) throws SQLException {
 		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		boolean result = false;
@@ -24,6 +25,7 @@ public class CallsDAO {
 		catch(Exception e){
 			em.getTransaction().rollback();
 			e.printStackTrace();
+			throw new SQLException(e.getMessage());
 		}
 		finally {
 			em.close();

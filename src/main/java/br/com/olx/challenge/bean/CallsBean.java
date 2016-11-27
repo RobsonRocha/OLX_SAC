@@ -1,6 +1,7 @@
 package br.com.olx.challenge.bean;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -149,7 +150,7 @@ public class CallsBean implements Serializable {
 
 	}
 	
-	public void insertCall(){
+	public void insertCall() throws SQLException {
 		CallsDAO callsDAO = new CallsDAO();
 		Calls calls = new Calls();
 		
@@ -161,7 +162,8 @@ public class CallsBean implements Serializable {
 		calls.setUser(loginBean.getLoggedUser());
 		
 		if(callsDAO.insert(calls)){
-			RequestContext.getCurrentInstance().execute("PF('dlgInsert').hide()");
+			if(RequestContext.getCurrentInstance() != null)
+				RequestContext.getCurrentInstance().execute("PF('dlgInsert').hide()");
 			getAllCalls();
 			description = null;			
 			reason = 'x';
