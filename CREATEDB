@@ -1,0 +1,73 @@
+-- SCHEMA: olx_sac
+
+-- DROP SCHEMA olx_sac ;
+
+CREATE SCHEMA olx_sac
+    AUTHORIZATION postgres;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA olx_sac
+GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
+
+
+-- Table: olx_sac.usuario_login
+
+-- DROP TABLE olx_sac.usuario_login;
+
+CREATE TABLE olx_sac.usuario_login
+(
+    login character varying COLLATE "default".pg_catalog NOT NULL,
+    senha character varying COLLATE "default".pg_catalog NOT NULL,
+    admin boolean NOT NULL DEFAULT false,
+    CONSTRAINT pklogin PRIMARY KEY (login)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE olx_sac.usuario_login
+    OWNER to postgres;
+
+GRANT ALL ON TABLE olx_sac.usuario_login TO postgres WITH GRANT OPTION;
+
+GRANT ALL ON TABLE olx_sac.usuario_login TO PUBLIC;
+
+-- Table: olx_sac.atendimentos
+
+-- DROP TABLE olx_sac.atendimentos;
+
+CREATE TABLE olx_sac.atendimentos
+(
+    uf character varying(2) COLLATE "default".pg_catalog NOT NULL,
+    tipo_chamado "char" NOT NULL,
+    numero bigint NOT NULL DEFAULT nextval('olx_sac.atendimentos_numero_seq'::regclass),
+    motivo "char" NOT NULL,
+    descricao character varying(4000) COLLATE "default".pg_catalog NOT NULL,
+    data_insercao timestamp with time zone NOT NULL,
+    login character varying COLLATE "default".pg_catalog NOT NULL,
+    CONSTRAINT atendimentos_pkey PRIMARY KEY (numero),
+    CONSTRAINT fk_login FOREIGN KEY (login)
+        REFERENCES olx_sac.usuario_login (login) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT ck_tipo_chamado CHECK (tipo_chamado = ANY (ARRAY['C'::"char", 'E'::"char", 'T'::"char"])),
+    CONSTRAINT ch_motivo CHECK (motivo = ANY (ARRAY['D'::"char", 'E'::"char", 'S'::"char"]))
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE olx_sac.atendimentos
+    OWNER to postgres;
+
+GRANT ALL ON TABLE olx_sac.atendimentos TO postgres WITH GRANT OPTION;
+
+-- Index: fki_fk_login
+
+-- DROP INDEX olx_sac.fki_fk_login;
+
+CREATE INDEX fki_fk_login
+    ON olx_sac.atendimentos USING btree
+    (login COLLATE pg_catalog."default")
+    TABLESPACE pg_default;

@@ -9,14 +9,14 @@
 <body>
 	<ui:composition>
 		<h:form id="mainBody">
-		
-			<p:blockUI block="callsTable" trigger="callsOP" />
-			
-			<p:dataTable var="calls" value="#{callsBean.callsFakes}" id="callsTable">
-				<f:facet name="header">
-	            Chamados
-	        </f:facet>
 
+			<p:blockUI block="callsTable" trigger="callsOP" />
+			<p:dataTable var="calls" value="#{callsBean.callsFakes}"
+				id="callsTable">
+				<f:facet name="header">
+					Chamados								
+				</f:facet>
+				
 				<p:columnGroup type="header">
 					<p:row>
 						<p:column rowspan="4" headerText=" " />
@@ -31,7 +31,7 @@
 					</p:row>
 				</p:columnGroup>
 
-				<p:subTable var="group"
+				<p:subTable id="callsSubtable" var="group"
 					value="#{callsBean.getCallsGroup(calls.state, calls.insertionDateString)}">
 					<f:facet name="header">
 						<h:outputText value="#{calls.state} " />
@@ -66,7 +66,8 @@
 				<p:outputPanel id="callsDetail" style="text-align:center;">
 					<p:panelGrid columns="2" columnClasses="label,value">
 						<h:outputText value="Descrição:" />
-						<h:inputTextarea value="#{callsBean.selectedCall.description}" disabled="true"/>
+						<h:inputTextarea value="#{callsBean.selectedCall.description}"
+							disabled="true" />
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:overlayPanel>
