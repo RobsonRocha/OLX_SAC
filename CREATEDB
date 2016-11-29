@@ -15,8 +15,8 @@ GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 
 CREATE TABLE olx_sac.usuario_login
 (
-    login character varying COLLATE "default".pg_catalog NOT NULL,
-    senha character varying COLLATE "default".pg_catalog NOT NULL,
+    login character varying NOT NULL,
+    senha character varying NOT NULL,
     admin boolean NOT NULL DEFAULT false,
     CONSTRAINT pklogin PRIMARY KEY (login)
 )
@@ -32,19 +32,29 @@ GRANT ALL ON TABLE olx_sac.usuario_login TO postgres WITH GRANT OPTION;
 
 GRANT ALL ON TABLE olx_sac.usuario_login TO PUBLIC;
 
+CREATE SEQUENCE olx_sac.atendimentos_numero_seq
+    INCREMENT 1
+    START 170
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE olx_sac.atendimentos_numero_seq
+    OWNER TO postgres;
+
 -- Table: olx_sac.atendimentos
 
 -- DROP TABLE olx_sac.atendimentos;
 
 CREATE TABLE olx_sac.atendimentos
 (
-    uf character varying(2) COLLATE "default".pg_catalog NOT NULL,
+    uf character varying(2)  NOT NULL,
     tipo_chamado "char" NOT NULL,
     numero bigint NOT NULL DEFAULT nextval('olx_sac.atendimentos_numero_seq'::regclass),
     motivo "char" NOT NULL,
-    descricao character varying(4000) COLLATE "default".pg_catalog NOT NULL,
+    descricao character varying(4000)  NOT NULL,
     data_insercao timestamp with time zone NOT NULL,
-    login character varying COLLATE "default".pg_catalog NOT NULL,
+    login character varying  NOT NULL,
     CONSTRAINT atendimentos_pkey PRIMARY KEY (numero),
     CONSTRAINT fk_login FOREIGN KEY (login)
         REFERENCES olx_sac.usuario_login (login) MATCH SIMPLE
