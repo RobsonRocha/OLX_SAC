@@ -29,6 +29,7 @@ A criação do banco está no arquivo CREATEDB.
 
 Para os testes foram utilizadas as bibliotecas [TestNG](http://testng.org/doc/index.html) e [Seleninum](http://www.seleniumhq.org/).
 Para usar o Selenium foi necessário o driver para o navegador, existem vários drivers para todos os navegadores, o utilizado aqui é o [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/getting-started), cujo executável está no projeto.
+Para Linux e Mac é possível baixar a versão 2.9 (mais recente, por enquanto) [aqui.](https://chromedriver.storage.googleapis.com/index.html?path=2.9/)
 Para executar os testes basta escrever na linha de comando abaixo com o sistema no ar.
 
 ```mvn test -Dwebdriver.base.url=http://endereco/sacweb -Dwebdriver.chrome.driver=[caminhoDoArquivo]/chromedriver.exe```
