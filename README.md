@@ -2,7 +2,7 @@
 
 ## Motivação
 
-Projeto criado para registar os chamados de um SAC que podem chegar via chat, e-mail ou telefone.
+Projeto criado para registrar os chamados de um SAC que podem chegar via chat, e-mail ou telefone.
 Os usuários que têm acesso a esse sistema são cadastrados via [CreateUserOLX_SAC](https://github.com/RobsonRocha/CreateUserOLX_SAC).
 Os atendentes do SAC registram os chamados preenchendo o formulário onde informam o tipo do chamado (telefone, chat, email), estado (ex: RJ, ES, etc), o motivo do chamado (dúvidas, elogios, sugestões) e a descrição do chamado que é um campo de texto livre onde os atendentes irão registrar os detalhes da conversa com o cliente.
 O supervisor poderá ver todos os chamados.
@@ -13,7 +13,7 @@ A linguagem utilizada é Java, com utilização de JSF com componentes [Primefac
 
 ## Compilação
 
-Para facilitar a importação de bibliotecas e a compilação dos arquivos em um único pacote, foi utilizado [Maven](https://maven.apache.org/).
+Para facilitar a importação de bibliotecas e a compilação dos arquivos em um único pacote, foi utilizado [Maven v3](https://maven.apache.org/).
 Para compilar gerando o pacote basta executar o comando abaixo na linha de comando.
 
 ```mvn -DskipTests compile package```
@@ -29,7 +29,7 @@ A criação do banco está no arquivo CREATEDB.
 
 Para os testes foram utilizadas as bibliotecas [TestNG](http://testng.org/doc/index.html) e [Seleninum](http://www.seleniumhq.org/).
 Para usar o Selenium foi necessário o driver para o navegador, existem vários drivers para todos os navegadores, o utilizado aqui é o [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/getting-started), cujo executável está no projeto.
-Para executar os testes basta escrever na linha de comando
+Para executar os testes basta escrever na linha de comando abaixo com o sistema no ar.
 
 ```mvn test -Dwebdriver.base.url=http://endereco/sacweb -Dwebdriver.chrome.driver=[caminhoDoArquivo]/chromedriver.exe```
 
@@ -37,7 +37,7 @@ Onde endereço é a url do projeto no navegador e caminhoDoArquivo é o caminho 
 
 ## Execução
 
-O container utilizado para execução do projeto foi o Tomcat 8.0 com a configuração padrão.
+O container utilizado para execução do projeto foi o [Tomcat 8.0](http://tomcat.apache.org/download-80.cgi) com a configuração padrão.
 
 
 
