@@ -30,9 +30,9 @@ import javax.persistence.TemporalType;
 @Table(name = "atendimentos", schema="olx_sac")
 public class Calls {
 	
-	private static final String REASON_DOUBT = "Dúvida"; 
+	private static final String REASON_DOUBT = "DÃºvida"; 
 	private static final String REASON_PRAISE = "Elogio";
-	private static final String REASON_SUGGESTION = "Sugestão";
+	private static final String REASON_SUGGESTION = "SugestÃ£o";
 	
 	private static final String TYPE_CALL_PHONE = "Telefone"; 
 	private static final String TYPE_CALL_CHAT = "Chat";
@@ -77,16 +77,16 @@ public class Calls {
 	
 	public String getTypeCallString() {
 		
-		if(this.typeCall == 'E')
-			return TYPE_CALL_EMAIL;
-		
-		if(this.typeCall == 'T')
-			return TYPE_CALL_PHONE;
-		
-		if(this.typeCall == 'C')
-			return TYPE_CALL_CHAT;
-		
-		return "";
+		switch (this.typeCall){
+			case 'E':
+				return TYPE_CALL_EMAIL;
+			case 'T':
+				return TYPE_CALL_PHONE;
+			case 'C':
+				return TYPE_CALL_CHAT;
+			default:
+				return "";
+		};		
 	}
 
 	public void setTypeCall(char typeCall) {
@@ -108,16 +108,16 @@ public class Calls {
 	}
 	
 	public String getReasonString() {
-		if(this.reason == 'D')
-			return REASON_DOUBT;
-		
-		if(this.reason == 'E')
-			return REASON_PRAISE;
-		
-		if(this.reason == 'S')			
-			return REASON_SUGGESTION;
-		
-		return "";
+		switch(this.reason){ 
+			case 'D':
+				return REASON_DOUBT;
+			case 'E':
+				return REASON_PRAISE;
+			case 'S':
+				return REASON_SUGGESTION;
+			default:
+				return "";
+		};
 	}
 
 	public void setReason(char reason) {
