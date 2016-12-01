@@ -34,7 +34,7 @@ public class LoginDAO {
 				return userFound;
 			}
 			if(FacesContext.getCurrentInstance() != null)
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login e/ou senha inv·lidos.", ""));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login e/ou senha inv√°lidos.", ""));
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();

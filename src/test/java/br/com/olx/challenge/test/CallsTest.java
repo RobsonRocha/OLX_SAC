@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -34,11 +35,17 @@ public class CallsTest {
 		baseUrl = System.getProperty("webdriver.base.url");
 		if (baseUrl == null || baseUrl.trim().isEmpty())
 			baseUrl = "http://localhost:8080/sacweb";
-		String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
-		if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
-			System.setProperty("webdriver.chrome.driver",
-				"/Projetos/primefaces/chromedriver.exe");
-		driver = new ChromeDriver();
+		
+		String usingFireFox = System.getProperty("webdriver.using.firefox");
+		if(usingFireFox.trim().toLowerCase().equals("true"))
+			driver = new FirefoxDriver();
+		else {
+			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
+			if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
+				System.setProperty("webdriver.chrome.driver",
+						"/Projetos/primefaces/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
 		driver.get(baseUrl);
 	}
 	
@@ -228,7 +235,7 @@ public class CallsTest {
 		Assert.assertTrue(errors.get(0).getText().equals("Escolha o tipo do chamado."));
 		Assert.assertTrue(errors.get(1).getText().equals("Escolha o motivo."));
 		Assert.assertTrue(errors.get(2).getText().equals("Escolha o Estado."));
-		Assert.assertTrue(errors.get(3).getText().equals("Preencha o campo Descri��o."));
+		Assert.assertTrue(errors.get(3).getText().equals("Preencha o campo Descrição."));
 		
 		btnMenu = driver.findElement(By.name("main:splMenu_menuButton"));
 		btnMenu.click();
@@ -264,14 +271,14 @@ public class CallsTest {
 		WebElement btnInsert = driver.findElement(By.id("main:mnuInsert"));
 		btnInsert.click();
 		
-		List<WebElement> reasons = driver.findElements(By.id("formInsert:reason"));
-		reasons.get(0).click();
+		WebElement reason = driver.findElement(By.xpath("//div[@id='formInsert:reason']/div/span[text()='Dúvidas']"));
+		reason.click();		
 		
 		WebElement state = driver.findElement(By.id("formInsert:state"));
 		state.sendKeys("RJ");
 		
 		WebElement description = driver.findElement(By.id("formInsert:description"));
-		description.sendKeys("Teste Unit�rio.");
+		description.sendKeys("Teste Unitário.");
 		
 		WebElement btnInsertCall = driver.findElement(By.id("formInsert:btnInsert"));
 		btnInsertCall.click();
@@ -314,14 +321,14 @@ public class CallsTest {
 		WebElement btnInsert = driver.findElement(By.id("main:mnuInsert"));
 		btnInsert.click();
 		
-		List<WebElement> types = driver.findElements(By.id("formInsert:typeCall"));
-		types.get(0).click();
+		WebElement type = driver.findElement(By.xpath("//div[@id='formInsert:typeCall']/div/span[text()='Chat']"));
+		type.click();	
 		
 		WebElement state = driver.findElement(By.id("formInsert:state"));
 		state.sendKeys("RJ");
 		
 		WebElement description = driver.findElement(By.id("formInsert:description"));
-		description.sendKeys("Teste Unit�rio.");
+		description.sendKeys("Teste Unitário.");
 		
 		WebElement btnInsertCall = driver.findElement(By.id("formInsert:btnInsert"));
 		btnInsertCall.click();
@@ -364,14 +371,14 @@ public class CallsTest {
 		WebElement btnInsert = driver.findElement(By.id("main:mnuInsert"));
 		btnInsert.click();
 		
-		List<WebElement> reasons = driver.findElements(By.id("formInsert:reason"));
-		reasons.get(0).click();
+		WebElement reason = driver.findElement(By.xpath("//div[@id='formInsert:reason']/div/span[text()='Dúvidas']"));
+		reason.click();	
 		
-		List<WebElement> types = driver.findElements(By.id("formInsert:typeCall"));
-		types.get(0).click();
+		WebElement type = driver.findElement(By.xpath("//div[@id='formInsert:typeCall']/div/span[text()='Chat']"));
+		type.click();	
 		
 		WebElement description = driver.findElement(By.id("formInsert:description"));
-		description.sendKeys("Teste Unit�rio.");
+		description.sendKeys("Teste Unitário.");
 		
 		WebElement btnInsertCall = driver.findElement(By.id("formInsert:btnInsert"));
 		btnInsertCall.click();
@@ -414,11 +421,11 @@ public class CallsTest {
 		WebElement btnInsert = driver.findElement(By.id("main:mnuInsert"));
 		btnInsert.click();
 		
-		List<WebElement> reasons = driver.findElements(By.id("formInsert:reason"));
-		reasons.get(0).click();
+		WebElement reason = driver.findElement(By.xpath("//div[@id='formInsert:reason']/div/span[text()='Dúvidas']"));
+		reason.click();	
 		
-		List<WebElement> types = driver.findElements(By.id("formInsert:typeCall"));
-		types.get(0).click();
+		WebElement type = driver.findElement(By.xpath("//div[@id='formInsert:typeCall']/div/span[text()='Chat']"));
+		type.click();	
 		
 		WebElement state = driver.findElement(By.id("formInsert:state"));
 		state.sendKeys("RJ");
@@ -428,7 +435,7 @@ public class CallsTest {
 		Thread.sleep(3000);
 		List<WebElement> errors = driver.findElements(By
 				.className("ui-growl-title"));
-		Assert.assertTrue(errors.get(0).getText().equals("Preencha o campo Descri��o."));
+		Assert.assertTrue(errors.get(0).getText().equals("Preencha o campo Descrição."));
 		
 		btnMenu = driver.findElement(By.name("main:splMenu_menuButton"));
 		btnMenu.click();
@@ -464,17 +471,17 @@ public class CallsTest {
 		WebElement btnInsert = driver.findElement(By.id("main:mnuInsert"));
 		btnInsert.click();
 		
-		List<WebElement> reasons = driver.findElements(By.id("formInsert:reason"));
-		reasons.get(0).click();
+		WebElement reason = driver.findElement(By.xpath("//div[@id='formInsert:reason']/div/span[text()='Dúvidas']"));
+		reason.click();	
 		
-		List<WebElement> types = driver.findElements(By.id("formInsert:typeCall"));
-		types.get(0).click();
+		WebElement type = driver.findElement(By.xpath("//div[@id='formInsert:typeCall']/div/span[text()='Chat']"));
+		type.click();	
 		
 		WebElement state = driver.findElement(By.id("formInsert:state"));
 		state.sendKeys("RJ");
 		
 		WebElement description = driver.findElement(By.id("formInsert:description"));
-		description.sendKeys("Teste Unit�rio.");
+		description.sendKeys("Teste Unitário.");
 		
 		WebElement btnInsertCall = driver.findElement(By.id("formInsert:btnInsert"));
 		btnInsertCall.click();
@@ -503,7 +510,7 @@ public class CallsTest {
 
 		Calls insertedCall = list.get(0);
 		
-		Assert.assertTrue(insertedCall.getDescription().equals("Teste Unit�rio."));
+		Assert.assertTrue(insertedCall.getDescription().equals("Teste Unitário."));
 		Assert.assertTrue(insertedCall.getUser().getLogin().equals(loggedUser.getLogin()));
 		
 		calls.add(insertedCall);		
