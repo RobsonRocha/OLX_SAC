@@ -51,7 +51,7 @@ GRANT ALL ON TABLE olx_sac.usuario_login TO PUBLIC;
 
 CREATE SEQUENCE olx_sac.atendimentos_numero_seq
     INCREMENT 1
-    START 170
+    START 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1;
