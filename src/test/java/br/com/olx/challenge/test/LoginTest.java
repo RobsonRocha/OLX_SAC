@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -40,11 +41,17 @@ public class LoginTest {
 		baseUrl = System.getProperty("webdriver.base.url");
 		if (baseUrl == null || baseUrl.trim().isEmpty())
 			baseUrl = "http://localhost:8080/sacweb";
-		String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
-		if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
-			System.setProperty("webdriver.chrome.driver",
-				"/Projetos/primefaces/chromedriver.exe");
-		driver = new ChromeDriver();
+		
+		String usingFireFox = System.getProperty("webdriver.using.firefox");
+		if(usingFireFox.trim().toLowerCase().equals("true"))
+			driver = new FirefoxDriver();
+		else {
+			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
+			if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
+				System.setProperty("webdriver.chrome.driver",
+						"/Projetos/primefaces/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
 		driver.get(baseUrl);
 	}
 	
@@ -107,7 +114,7 @@ public class LoginTest {
 		Thread.sleep(3000);
 		WebElement error = driver.findElement(By
 				.className("ui-messages-error-summary"));
-		Assert.assertTrue(error.getText().equals("Login e/ou senha inv·lidos."));		
+		Assert.assertTrue(error.getText().equals("Login e/ou senha inv√°lidos."));		
 	}
 	
 	@Test
