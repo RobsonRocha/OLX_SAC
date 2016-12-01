@@ -7,13 +7,13 @@ import java.security.NoSuchAlgorithmException;
 public class Utils {
 
 	public static String randomPassword() {
-		String leters = "abcdefghijklmnopqrstuvwxyz";
+		String letters = "abcdefghijklmnopqrstuvwxyz";
 		int random;
 		String result = "";
 
 		for (int i = 1; i <= 10; i++) {
-			random = (int) (Math.random() * (leters.length() - 1));
-			result += leters.charAt(random);
+			random = (int) (Math.random() * (letters.length() - 1));
+			result += letters.charAt(random);
 		}
 
 		return result;

@@ -30,9 +30,9 @@ import javax.persistence.TemporalType;
 @Table(name = "atendimentos", schema="olx_sac")
 public class Calls {
 	
-	private static final String REASON_DOUBT = "DÃºvida"; 
+	private static final String REASON_DOUBT = "Dúvida"; 
 	private static final String REASON_PRAISE = "Elogio";
-	private static final String REASON_SUGGESTION = "SugestÃ£o";
+	private static final String REASON_SUGGESTION = "Sugestão";
 	
 	private static final String TYPE_CALL_PHONE = "Telefone"; 
 	private static final String TYPE_CALL_CHAT = "Chat";
@@ -86,7 +86,7 @@ public class Calls {
 				return TYPE_CALL_CHAT;
 			default:
 				return "";
-		};		
+		}		
 	}
 
 	public void setTypeCall(char typeCall) {
@@ -117,7 +117,7 @@ public class Calls {
 				return REASON_SUGGESTION;
 			default:
 				return "";
-		};
+		}
 	}
 
 	public void setReason(char reason) {
