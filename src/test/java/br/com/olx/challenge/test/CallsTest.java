@@ -37,7 +37,7 @@ public class CallsTest {
 			baseUrl = "http://localhost:8080/sacweb";
 		
 		String usingFireFox = System.getProperty("webdriver.using.firefox");
-		if(usingFireFox.trim().toLowerCase().equals("true"))
+		if(usingFireFox != null && usingFireFox.trim().toLowerCase().equals("true"))
 			driver = new FirefoxDriver();
 		else {
 			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
