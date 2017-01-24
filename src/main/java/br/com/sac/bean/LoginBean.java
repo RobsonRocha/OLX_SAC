@@ -1,4 +1,4 @@
-package br.com.olx.challenge.bean;
+package br.com.sac.bean;
 
 import java.io.Serializable;
 
@@ -7,8 +7,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.olx.challenge.dao.LoginDAO;
-import br.com.olx.challenge.model.UserLogin;
+import br.com.sac.dao.LoginDAO;
+import br.com.sac.model.UserLogin;
 
 @ManagedBean(name="loginBean")
 @SessionScoped

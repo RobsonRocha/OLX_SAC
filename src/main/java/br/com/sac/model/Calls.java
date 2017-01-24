@@ -1,4 +1,4 @@
-package br.com.olx.challenge.model;
+package br.com.sac.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
   query = "SELECT distinct to_char(c.insertionDate,'dd/mm/yyyy'), c.state, c.insertionDate FROM Calls c order by c.insertionDate desc"),
   @NamedQuery(name = "Calls.allGroupsByLogin",
   query = "SELECT distinct to_char(c.insertionDate,'dd/mm/yyyy'), c.state, c.insertionDate FROM Calls c where c.user.login = :login order by c.insertionDate desc")})
-@Table(name = "atendimentos", schema="olx_sac")
+@Table(name = "atendimentos", schema="sac")
 public class Calls {
 	
 	private static final String REASON_DOUBT = "Dúvida"; 

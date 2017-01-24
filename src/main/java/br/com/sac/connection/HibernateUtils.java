@@ -1,4 +1,4 @@
-package br.com.olx.challenge.connection;
+package br.com.sac.connection;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

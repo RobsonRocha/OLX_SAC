@@ -1,4 +1,4 @@
-package br.com.olx.challenge.bean;
+package br.com.sac.bean;
 
 import java.io.Serializable;
 

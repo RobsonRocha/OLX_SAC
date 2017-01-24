@@ -1,20 +1,19 @@
+-- SCHEMA: sac
 
--- SCHEMA: olx_sac
+-- DROP SCHEMA sac ;
 
--- DROP SCHEMA olx_sac ;
-
-CREATE SCHEMA olx_sac
+CREATE SCHEMA sac
     AUTHORIZATION postgres;
 
-ALTER DEFAULT PRIVILEGES IN SCHEMA olx_sac
+ALTER DEFAULT PRIVILEGES IN SCHEMA sac
 GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 
 
--- Table: olx_sac.usuario_login
+-- Table: sac.usuario_login
 
--- DROP TABLE olx_sac.usuario_login;
+-- DROP TABLE sac.usuario_login;
 
-CREATE TABLE olx_sac.usuario_login
+CREATE TABLE sac.usuario_login
 (
     login character varying NOT NULL,
     senha character varying NOT NULL,
@@ -26,39 +25,39 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE olx_sac.usuario_login
+ALTER TABLE sac.usuario_login
     OWNER to postgres;
 
-GRANT ALL ON TABLE olx_sac.usuario_login TO postgres WITH GRANT OPTION;
+GRANT ALL ON TABLE sac.usuario_login TO postgres WITH GRANT OPTION;
 
-GRANT ALL ON TABLE olx_sac.usuario_login TO PUBLIC;
+GRANT ALL ON TABLE sac.usuario_login TO PUBLIC;
 
-CREATE SEQUENCE olx_sac.atendimentos_numero_seq
+CREATE SEQUENCE sac.atendimentos_numero_seq
     INCREMENT 1
     START 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1;
 
-ALTER SEQUENCE olx_sac.atendimentos_numero_seq
+ALTER SEQUENCE sac.atendimentos_numero_seq
     OWNER TO postgres;
 
--- Table: olx_sac.atendimentos
+-- Table: sac.atendimentos
 
--- DROP TABLE olx_sac.atendimentos;
+-- DROP TABLE sac.atendimentos;
 
-CREATE TABLE olx_sac.atendimentos
+CREATE TABLE sac.atendimentos
 (
     uf character varying(2)  NOT NULL,
     tipo_chamado "char" NOT NULL,
-    numero bigint NOT NULL DEFAULT nextval('olx_sac.atendimentos_numero_seq'::regclass),
+    numero bigint NOT NULL DEFAULT nextval('sac.atendimentos_numero_seq'::regclass),
     motivo "char" NOT NULL,
     descricao character varying(4000)  NOT NULL,
     data_insercao timestamp with time zone NOT NULL,
     login character varying  NOT NULL,
     CONSTRAINT atendimentos_pkey PRIMARY KEY (numero),
     CONSTRAINT fk_login FOREIGN KEY (login)
-        REFERENCES olx_sac.usuario_login (login) MATCH SIMPLE
+        REFERENCES sac.usuario_login (login) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT ck_tipo_chamado CHECK (tipo_chamado = ANY (ARRAY['C'::"char", 'E'::"char", 'T'::"char"])),
@@ -69,16 +68,16 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE olx_sac.atendimentos
+ALTER TABLE sac.atendimentos
     OWNER to postgres;
 
-GRANT ALL ON TABLE olx_sac.atendimentos TO postgres WITH GRANT OPTION;
+GRANT ALL ON TABLE sac.atendimentos TO postgres WITH GRANT OPTION;
 
 -- Index: fki_fk_login
 
--- DROP INDEX olx_sac.fki_fk_login;
+-- DROP INDEX sac.fki_fk_login;
 
 CREATE INDEX fki_fk_login
-    ON olx_sac.atendimentos USING btree
+    ON sac.atendimentos USING btree
     (login COLLATE pg_catalog."default")
     TABLESPACE pg_default;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
-	<display-name>OLX SAC Web</display-name>
+	<display-name>SACWeb</display-name>
 	<filter>
 		<filter-name>LoginFilter</filter-name>
-		<filter-class>br.com.olx.challenge.filter.LoginFilter</filter-class>
+		<filter-class>br.com.sac.filter.LoginFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginFilter</filter-name>

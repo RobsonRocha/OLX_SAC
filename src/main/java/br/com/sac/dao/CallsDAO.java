@@ -1,4 +1,4 @@
-package br.com.olx.challenge.dao;
+package br.com.sac.dao;
 
 import java.sql.SQLException;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.olx.challenge.model.Calls;
+import br.com.sac.model.Calls;
 
 public class CallsDAO {
 
@@ -15,7 +15,7 @@ public class CallsDAO {
 		EntityManager em = null;
 		boolean result = false;
 		try {
-			emf = Persistence.createEntityManagerFactory("OLX_SAC");
+			emf = Persistence.createEntityManagerFactory("SAC");
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(calls);
@@ -39,7 +39,7 @@ public class CallsDAO {
 		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		try {
-			emf = Persistence.createEntityManagerFactory("OLX_SAC");
+			emf = Persistence.createEntityManagerFactory("SAC");
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
 			Calls deleteCall = em.find(Calls.class, calls.getNumber());

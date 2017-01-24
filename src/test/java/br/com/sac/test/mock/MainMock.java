@@ -1,15 +1,15 @@
-package br.com.olx.challenge.test.mock;
+package br.com.sac.test.mock;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.olx.challenge.bean.CallsBean;
-import br.com.olx.challenge.bean.LoginBean;
-import br.com.olx.challenge.dao.CallsDAO;
-import br.com.olx.challenge.dao.LoginDAO;
-import br.com.olx.challenge.model.Calls;
-import br.com.olx.challenge.model.UserLogin;
-import br.com.olx.challenge.test.util.Utils;
+import br.com.sac.bean.CallsBean;
+import br.com.sac.bean.LoginBean;
+import br.com.sac.dao.CallsDAO;
+import br.com.sac.dao.LoginDAO;
+import br.com.sac.model.Calls;
+import br.com.sac.model.UserLogin;
+import br.com.sac.test.util.Utils;
 
 public class MainMock {
 	
