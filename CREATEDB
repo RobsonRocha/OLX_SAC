@@ -8,7 +8,7 @@ CREATE SCHEMA sac
 ALTER DEFAULT PRIVILEGES IN SCHEMA sac
 GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 
--- Tabela de usuários
+-- Tabela de usuários preenchida pelo CreateUser
 -- Table: sac.usuario_login
 
 -- DROP TABLE sac.usuario_login;
