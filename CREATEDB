@@ -8,7 +8,7 @@ CREATE SCHEMA sac
 ALTER DEFAULT PRIVILEGES IN SCHEMA sac
 GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 
-
+-- Tabela de usuários
 -- Table: sac.usuario_login
 
 -- DROP TABLE sac.usuario_login;
@@ -42,6 +42,7 @@ CREATE SEQUENCE sac.atendimentos_numero_seq
 ALTER SEQUENCE sac.atendimentos_numero_seq
     OWNER TO postgres;
 
+-- Tabela de atendimentos
 -- Table: sac.atendimentos
 
 -- DROP TABLE sac.atendimentos;
