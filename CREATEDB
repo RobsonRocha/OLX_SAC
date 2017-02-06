@@ -1,21 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
--- SCHEMA: olx_sac
-
--- DROP SCHEMA olx_sac ;
-
-CREATE SCHEMA olx_sac
-=======
--- SCHEMA: sac
-=======
 -- SCHEMA: sac 
->>>>>>> b754a6656c33f0c5976494f8b651e4e3a6aac498
 
 -- DROP SCHEMA sac ;
 
 CREATE SCHEMA sac
->>>>>>> e04ca72845234215a3222dc4cec83901aa4d8532
     AUTHORIZATION postgres;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA sac
@@ -25,7 +12,7 @@ GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 -- Table: sac.usuario_login
 
 -- DROP TABLE sac.usuario_login;
--- Tabela de usu√°rio
+-- Tabela de usu·rio
 CREATE TABLE sac.usuario_login
 (
     login character varying NOT NULL,
