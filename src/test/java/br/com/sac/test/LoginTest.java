@@ -49,7 +49,11 @@ public class LoginTest {
 			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
 			if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
 				System.setProperty("webdriver.chrome.driver",
+<<<<<<< HEAD:src/test/java/br/com/olx/challenge/test/LoginTest.java
+						"/Projetos/primefaces/chromedriver.exe");
+=======
 						"/Projetos/chromedriver.exe");
+>>>>>>> e04ca72845234215a3222dc4cec83901aa4d8532:src/test/java/br/com/sac/test/LoginTest.java
 			driver = new ChromeDriver();
 		}
 		driver.get(baseUrl);

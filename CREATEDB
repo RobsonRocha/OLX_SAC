@@ -1,4 +1,4 @@
--- SCHEMA: sac
+-- SCHEMA: sac 
 
 -- DROP SCHEMA sac ;
 
@@ -12,7 +12,7 @@ GRANT ALL ON TABLES TO postgres WITH GRANT OPTION;
 -- Table: sac.usuario_login
 
 -- DROP TABLE sac.usuario_login;
-
+-- Tabela de usuário
 CREATE TABLE sac.usuario_login
 (
     login character varying NOT NULL,
@@ -46,6 +46,8 @@ ALTER SEQUENCE sac.atendimentos_numero_seq
 -- Table: sac.atendimentos
 
 -- DROP TABLE sac.atendimentos;
+
+-- Tabela dos atendimentos
 
 CREATE TABLE sac.atendimentos
 (
