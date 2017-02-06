@@ -1,4 +1,4 @@
-package br.com.olx.challenge.test;
+package br.com.sac.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import br.com.olx.challenge.model.UserLogin;
-import br.com.olx.challenge.test.mock.MainMock;
-import br.com.olx.challenge.test.util.Utils;
+import br.com.sac.model.UserLogin;
+import br.com.sac.test.mock.MainMock;
+import br.com.sac.test.util.Utils;
 
 public class LoginTest {
 
@@ -49,7 +49,11 @@ public class LoginTest {
 			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
 			if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
 				System.setProperty("webdriver.chrome.driver",
+<<<<<<< HEAD:src/test/java/br/com/olx/challenge/test/LoginTest.java
 						"/Projetos/primefaces/chromedriver.exe");
+=======
+						"/Projetos/chromedriver.exe");
+>>>>>>> e04ca72845234215a3222dc4cec83901aa4d8532:src/test/java/br/com/sac/test/LoginTest.java
 			driver = new ChromeDriver();
 		}
 		driver.get(baseUrl);

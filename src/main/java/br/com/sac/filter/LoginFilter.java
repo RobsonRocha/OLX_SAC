@@ -1,4 +1,4 @@
-package br.com.olx.challenge.filter;
+package br.com.sac.filter;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.olx.challenge.bean.LoginBean;
+import br.com.sac.bean.LoginBean;
 
 public class LoginFilter implements Filter {
 

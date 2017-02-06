@@ -1,4 +1,4 @@
-package br.com.olx.challenge.dao;
+package br.com.sac.dao;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.olx.challenge.model.UserLogin;
-import br.com.olx.challenge.util.CryptoPassword;
+import br.com.sac.model.UserLogin;
+import br.com.sac.util.CryptoPassword;
 
 
 public class LoginDAO {
@@ -21,7 +21,7 @@ public class LoginDAO {
 	    
 		try {
 			
-			emf = Persistence.createEntityManagerFactory("OLX_SAC");
+			emf = Persistence.createEntityManagerFactory("SAC");
 		    em = emf.createEntityManager();
 			
 			List<UserLogin> user = (List<UserLogin>) em.createNamedQuery("UserLogin.findByUser")
@@ -51,7 +51,7 @@ public class LoginDAO {
 		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		try {
-			emf = Persistence.createEntityManagerFactory("OLX_SAC");
+			emf = Persistence.createEntityManagerFactory("SAC");
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(userLogin);
@@ -71,7 +71,7 @@ public class LoginDAO {
 		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		try {
-			emf = Persistence.createEntityManagerFactory("OLX_SAC");
+			emf = Persistence.createEntityManagerFactory("SAC");
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
 			UserLogin deleteUserLogin = em.find(UserLogin.class, userLogin.getLogin());

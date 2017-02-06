@@ -1,10 +1,24 @@
-package br.com.olx.challenge.util;
+package br.com.sac.test.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class CryptoPassword {
+public class Utils {
+
+	public static String randomPassword() {
+		String letters = "abcdefghijklmnopqrstuvwxyz";
+		int random;
+		String result = "";
+
+		for (int i = 1; i <= 10; i++) {
+			random = (int) (Math.random() * (letters.length() - 1));
+			result += letters.charAt(random);
+		}
+
+		return result;
+	}
+
 	public static String convertStringToMd5(String value) {
 		MessageDigest mDigest;
 		try {

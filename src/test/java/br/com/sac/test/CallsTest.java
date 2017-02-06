@@ -1,4 +1,4 @@
-package br.com.olx.challenge.test;
+package br.com.sac.test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import br.com.olx.challenge.bean.LoginBean;
-import br.com.olx.challenge.bean.RedirectBean;
-import br.com.olx.challenge.model.Calls;
-import br.com.olx.challenge.model.UserLogin;
-import br.com.olx.challenge.test.mock.MainMock;
-import br.com.olx.challenge.test.util.Utils;
+import br.com.sac.bean.LoginBean;
+import br.com.sac.bean.RedirectBean;
+import br.com.sac.model.Calls;
+import br.com.sac.model.UserLogin;
+import br.com.sac.test.mock.MainMock;
+import br.com.sac.test.util.Utils;
 
 public class CallsTest {
 	
@@ -43,7 +43,11 @@ public class CallsTest {
 			String pathChromeDriver = System.getProperty("webdriver.chrome.driver");
 			if(pathChromeDriver == null || pathChromeDriver.trim().isEmpty())
 				System.setProperty("webdriver.chrome.driver",
+<<<<<<< HEAD:src/test/java/br/com/olx/challenge/test/CallsTest.java
 						"/Projetos/primefaces/chromedriver.exe");
+=======
+						"/Projetos/chromedriver.exe");
+>>>>>>> e04ca72845234215a3222dc4cec83901aa4d8532:src/test/java/br/com/sac/test/CallsTest.java
 			driver = new ChromeDriver();
 		}
 		driver.get(baseUrl);

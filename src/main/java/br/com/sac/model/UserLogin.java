@@ -1,4 +1,4 @@
-package br.com.olx.challenge.model;
+package br.com.sac.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @NamedQueries(value = { @NamedQuery(name = "UserLogin.findByUser",
   query = "SELECT c FROM UserLogin c "
   + "WHERE c.password = :senha AND c.login = :login")})
-@Table(name = "usuario_login", schema="olx_sac")
+@Table(name = "usuario_login", schema="sac")
 public class UserLogin {
 	
 	@Id

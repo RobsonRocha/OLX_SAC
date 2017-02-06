@@ -1,4 +1,4 @@
-package br.com.olx.challenge.bean;
+package br.com.sac.bean;
 
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -19,8 +19,8 @@ import javax.persistence.Persistence;
 
 import org.primefaces.context.RequestContext;
 
-import br.com.olx.challenge.dao.CallsDAO;
-import br.com.olx.challenge.model.Calls;
+import br.com.sac.dao.CallsDAO;
+import br.com.sac.model.Calls;
 
 @ManagedBean(name="callsBean")
 @ViewScoped
@@ -88,7 +88,7 @@ public class CallsBean implements Serializable {
 		
 		try {
 			emf = Persistence
-					.createEntityManagerFactory("OLX_SAC");
+					.createEntityManagerFactory("SAC");
 			em = emf.createEntityManager();
 			
 			List<Object[]> listGroup = null;
@@ -110,6 +110,9 @@ public class CallsBean implements Serializable {
 			callsFakes = new ArrayList<Calls>();
 			
 			List<String> keys = new ArrayList<String>(); 
+			
+			if(listGroup.isEmpty())
+				return;
 			
 			for(Object o[] : listGroup){
 				
